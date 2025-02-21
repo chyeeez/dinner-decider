@@ -16,7 +16,7 @@ st.markdown(
         /* 讓標題置中 */
         .title {
             text-align: center;
-            font-size: 50px !important;
+            font-size: 40px !important;
             font-weight: bold;
         }
         
