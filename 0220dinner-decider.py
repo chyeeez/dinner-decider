@@ -1,7 +1,38 @@
 import streamlit as st
 import random
 
-# 晚餐選項
+# 初始化 session_state
+if "page" not in st.session_state:
+    st.session_state.page = "main"
+
+# 畫面切換邏輯
+if st.session_state.page == "main":
+    st.title("🍽️ 你今天想選擇什麼？")
+    
+    # 三個按鈕選擇不同類別
+    if st.button("🥤 飲料選擇"):
+        st.session_state.page = "drink"
+    if st.button("🍱 午餐選擇"):
+        st.session_state.page = "lunch"
+    if st.button("🍛 晚餐選擇"):
+        st.session_state.page = "dinner"
+
+elif st.session_state.page == "drink":
+    st.title("🥤 來點飲料吧！")
+    # 這裡放飲料選擇邏輯
+    if st.button("返回主畫面"):
+        st.session_state.page = "main"
+
+elif st.session_state.page == "lunch":
+    st.title("🍱 午餐來點什麼呢？")
+    # 這裡放午餐選擇邏輯
+    if st.button("返回主畫面"):
+        st.session_state.page = "main"
+
+elif st.session_state.page == "dinner":
+    st.title("🍛 晚餐吃什麼好呢？")
+    # 這裡放晚餐選擇邏輯（可以用你現在寫好的程式）
+    # 晚餐選項
 dinner_options = [
     "好食居", "彈牙麵", "長生鹽人", "存嘉", "超厚切豬排", "泰國小館", "實至名歸",
     "樂三宰相", "薯樂堡", "孫東寶", "仙客來", "明德小炒", "魯三塊", "越南小吃",
@@ -63,3 +94,7 @@ with col2:
         choice = random.choice(dinner_options)
         st.markdown(f"<p class='result-box'>🍴今天吃：{choice}🍺</p>", unsafe_allow_html=True)
         st.markdown("<p style='text-align: center;font-size: 20px; font-weight: bold; color: #888888;'>今天辛苦了 快去吃飯吧(๑•̀ㅂ•́)و✧</p>", unsafe_allow_html=True)
+
+    if st.button("返回主畫面"):
+        st.session_state.page = "main"
+
